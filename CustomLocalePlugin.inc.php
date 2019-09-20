@@ -27,6 +27,11 @@ class CustomLocalePlugin extends GenericPlugin {
 				$localeFiles = AppLocale::getLocaleFiles($locale);
 
 				$context = Request::getContext();
+				if ($context == NULL ) {
+					// No context abort registration
+					return false;
+				}
+
 				$contextId = $context->getId();
 
 				$publicFilesDir = Config::getVar('files', 'public_files_dir');
